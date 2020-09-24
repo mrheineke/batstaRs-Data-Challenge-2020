@@ -17,9 +17,20 @@ LA_Data_2019 <- LA_Data %>%
 library(ggplot2)
 library(cowplot)
 
+# Plot of Land Assessed Value by year grouped by General Use Type
 ggplot(data = LA_Data_2019, aes(x=LandBaseYear, y = LandValue, fill = GeneralUseType)) + 
   geom_bar(stat = 'identity', position = "stack") + 
   xlim(1975,2020) +
   labs(x = "Land Assessment Year", y = "Land Assessment Value", fill = "General Use Type") +
   theme_cowplot() 
+
+# Plot of Land Assessed Value by year grouped by Specific Use Type
+ggplot(data = LA_Data_2019, aes(x=LandBaseYear, y = LandValue, fill = SpecificUseType)) + 
+  geom_bar(stat = 'identity', position = "stack") + 
+  xlim(1975,2020) +
+  labs(x = "Land Assessment Year", y = "Land Assessment Value", fill = "Specific Use Type") +
+  theme_cowplot() +
+  theme(legend.title = element_text(size = 5), 
+          legend.text = element_text(size = 5)) +
+  guides(color = guide_legend(override.aes = list(size = 1))) 
   
