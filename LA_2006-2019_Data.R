@@ -62,11 +62,12 @@ ggplot(data = LA_Data_2019, aes(x=LandBaseYear, y = netTaxableValue, fill = Gene
 ggplot(data = LA_Data_2019, aes(x=LandBaseYear, y = netTaxableValue, fill = SpecificUseType)) + 
   geom_bar(stat = 'identity', position = "stack") + 
   xlim(1975,2020) +
-  labs(x = "Land Assessment Year", y = "Net Taxable Value", fill = "Specific Use Type") +
+  labs(x = "Land Assessment Year", y = "Net Taxable Value (USD)", fill = "Specific Use Type", title = "Net Taxable Value by Year Assessed in LA County") +
   theme_cowplot() +
   theme(legend.title = element_text(size = 5), 
         legend.text = element_text(size = 5)) +
   guides(color = guide_legend(override.aes = list(size = 1))) 
+ggsave("SpecUse_NetTaxValue.png", dpi = 320 )
 
 # Plot of Net Taxable Value by Specifc Use Type
 LA_Data_2019_SpecUse <- LA_Data_2019 %>%
